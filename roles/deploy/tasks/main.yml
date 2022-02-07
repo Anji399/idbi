@@ -1,0 +1,13 @@
+- name: download artifact
+  get_url:
+     url: https://github.com/Anji399/idbi/raw/master/target/idbi.war
+     dest: /tmp
+- name: copy artifact
+  copy:
+     src: /tmp/idbi.war
+     dest: /opt/tomcat/webapps/idbi.war
+     owner: tomcat
+     group: tomcat
+     remote_src: yes
+  notify: restart tomcat
+ 
